@@ -8,8 +8,9 @@ public class q2 {
     //Utilize também a função int vencedor(int[] contagem) para retornar o índice do
     //candidato mais votado.
     public static void main(String[] args) {
-        int votos[] = new int[20];
+        int votos[] =  {0, 1, 4, 3, 3, 2, 1, 4, 4, 2, 0, 1, 1, 3, 2, 2, 4, 4, 1, 0};
 
+        /*
         Scanner input = new Scanner(System.in);
         for(int i=0;i<votos.length;i++){
             votos[i] = input.nextInt();
@@ -19,7 +20,11 @@ public class q2 {
             }
         }
 
-        int vencedor = vencedor(contarVotos(votos));
+       */
+        int contadordeVotos[] = contarVotos(votos);
+        for (int i = 0; i < contadordeVotos.length; i++) {
+            System.out.println(contadordeVotos[i] + " " + i);        }
+        System.out.println(vencedor(contarVotos(votos)));
     }
 
     public static int[] contarVotos(int[] votos){
@@ -48,7 +53,7 @@ public class q2 {
         int vencedor = 0;
         for (int i = 0; i < contagem.length; i++) {
             if (contagem[i] > vencedor) {
-                vencedor = contagem[i];
+                vencedor = i;
             }
         }
         return vencedor;
