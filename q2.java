@@ -1,3 +1,4 @@
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class q2 {
@@ -24,7 +25,7 @@ public class q2 {
         int contadordeVotos[] = contarVotos(votos);
         for (int i = 0; i < contadordeVotos.length; i++) {
             System.out.println(contadordeVotos[i] + " " + i);        }
-        System.out.println(vencedor(contarVotos(votos)));
+        System.out.println(Arrays.toString(vencedor(contarVotos(votos))));
     }
 
     public static int[] contarVotos(int[] votos){
@@ -49,14 +50,31 @@ public class q2 {
         return contadorVotos;
     }
 
-    public static int vencedor(int[] contagem) {
-        int vencedor = 0;
+    public static int[] vencedor(int[] contagem) {
+        int maxVotos = 0;
+
         for (int i = 0; i < contagem.length; i++) {
-            if (contagem[i] > vencedor) {
-                vencedor = i;
+            if (contagem[i] > maxVotos) {
+                maxVotos = contagem[i];
             }
         }
-        return vencedor;
+
+        int qtdEmpatados = 0;
+        for (int i = 0; i < contagem.length; i++) {
+            if (contagem[i] == maxVotos) {
+                qtdEmpatados++;
+            }
+        }
+
+        int[] vencedores = new int[qtdEmpatados];
+        int pos = 0;
+        for (int i = 0; i < contagem.length; i++) {
+            if (contagem[i] == maxVotos) {
+                vencedores[pos++] = i;
+            }
+        }
+
+        return vencedores;
     }
 
 
